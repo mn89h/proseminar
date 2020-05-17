@@ -1,0 +1,12 @@
+
+
+prediction survey OR overview OR outlook OR comparison OR v2x OR v2v OR v2c OR 802.11p OR vanet OR vnet
+vehicular|mnet|vnet|vanet|v2x|v2c|802.11p|5g|v2i performance|quality|qos prediction survey|overview|comparison
+    **  m   Comparison of path loss measurements and predictions at urban crossroads for C2C communications
+    *** m   Cell Planning and Deployment for IEEE 802.11p\/WAVE Network
+    *   r   An overview of vertical handover techniques: Algorithms, protocols and tools
+    *** m   Broadcasting with Prediction and Selective Forwarding in Vehicular Networks 
+    **  mr? Predicting Car Collisions Using RSSI
+    *   m?  Efficient VANET-based Traffic Information Sharingusing Buses on Regular Routes
+    **  m   An Effective and Efficient Adaptive Probability DataDissemination Protocol in VANET
+    *** s   Vehicular Communications: Survey and Challenges of Channel and Propagation Models
