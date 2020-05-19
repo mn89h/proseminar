@@ -2141,7 +2141,17 @@
     <bcf:citekey order="6">wongWLC435LowComplexityAdaptive2006</bcf:citekey>
     <bcf:citekey order="6">vaughanShorttermMobileChannel2000</bcf:citekey>
     <bcf:citekey order="7">kelchCQIMapsOptimized2013</bcf:citekey>
-    <bcf:citekey order="8">b3</bcf:citekey>
+    <bcf:citekey order="8">pogelPrediction3GNetwork2012</bcf:citekey>
+    <bcf:citekey order="9">schmidPassiveMonitoringGeobased2018</bcf:citekey>
+    <bcf:citekey order="10">xuPROTEUSNetworkPerformance2013</bcf:citekey>
+    <bcf:citekey order="11">torres-figueroaQoSEvaluationPrediction2020</bcf:citekey>
+    <bcf:citekey order="12">schmidDeepLearningApproach2019</bcf:citekey>
+    <bcf:citekey order="12">schmidComparisonAIBasedThroughput2019</bcf:citekey>
+    <bcf:citekey order="13">jomrichEnhancedCellularBandwidth2019</bcf:citekey>
+    <bcf:citekey order="14">falkenbergDiscoverYourCompetition2017</bcf:citekey>
+    <bcf:citekey order="14">yueLinkForecastCellularLink2018</bcf:citekey>
+    <bcf:citekey order="14">sambaInstantaneousThroughputPrediction2017</bcf:citekey>
+    <bcf:citekey order="14">sambaThroughputPredictionCellular</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

@@ -6,7 +6,7 @@
 \usepackage[OT1]{fontenc}
 
 
-\usepackage[style=numeric-comp]{biblatex}
+\usepackage[style=numeric-comp,sorting=none]{biblatex}
 %\RequirePackage[style=numeric,doi=false,isbn=false,url=false, firstinits=true, maxbibnames=99]{biblatex}
 \addbibresource{references.bib}
 
@@ -88,58 +88,26 @@ The most interesting parameters are the reliability, e.g. measured in packet los
 \section{Scope of the Paper}
 While there are many channel quality prediction approaches, not all are appropriate for our use case.
 
-This paper lays its focus on higher level V2X communication prediction, hence methods aimed at replacing traditional pilot-based channel estimation used for adaptive transmission techniques such as adaptive modulation, channel coding or power control will not be covered.
-While these methods may use similar prediction methods (e.g. autoregression and machine learning), they are used for immediate future link level channel prediction.
-For further research in this area of research please refer to \cite{semmelrodtInvestigationDifferentFading2003,duel-hallenFadingChannelPrediction2007,wongJointChannelEstimation2005,wongWLC435LowComplexityAdaptive2006,vaughanShorttermMobileChannel2000}
+This paper lays its focus on higher level V2X communication prediction, hence methods aimed at replacing traditional pilot-based channel estimation will not be covered.
+
+While these methods may use similar prediction models (e.g. autoregression and machine learning), their prediction horizon spans only several milliseconds, which enables adaptive transmission techniques such as adaptive modulation, channel coding or power control, but is conceptually inappropriate for the intended use case of adaptive coordination behaviour based on future connectivity.
+
+For further research in this area of research please refer to \cite{semmelrodtInvestigationDifferentFading2003,duel-hallenFadingChannelPrediction2007,wongJointChannelEstimation2005,wongWLC435LowComplexityAdaptive2006,vaughanShorttermMobileChannel2000}.
 
 
 \section{Methods}
-Methods for Communication Prediction can be primarily split into two categories, on the one hand the channel quality prediction for the immediate future and on the other hand channel quality or related indicator prediction for the short- to long-term future.
+This section covers the research projects of prediction methods, categorized by their used prediction models. 
 
-\subsection{Immediate Channel Prediction Schemes}
-The immediate channel quality prediction is mainly targeted as an extension resp. an alternative for traditional channel quality estimation using pilot symbols.
-Over the years, a large number of works using different prediction algorithms emerged. 
-
-Traditional prediction schemes based on channel propagation models or past channel information can be classified into the three methods: Sum-of-Sinusoids (SOS) Model, Basis Expansion (BE) Model and Autoregression (AR) Model.
-
-Common to these traditional methods is their time frame, predicting only several milliseconds into the future for high velocity nodes. This time frame is small, but enables adaptive transmission techniques such as adaptive modulation, channel coding or power control and even adjustments in high level applications in contrast to using estimated CSI, which is instantaneously outdated at higher velocities.
-
-\subsubsection{AR}
-The AR model uses previous channel samples in form of CSI in combination with time-variant coefficients. These channel coefficients need to be computed using estimation techniques, either static, such as Wiener filter or LS criterion, or adaptive, such as various LMS or RLS filters.
-
-One of the most acclaimed works in this area of research was conducted by Duel-Hallen et al. \cite{duel-hallenLongrangePredictionFading2000}. Their research was performed in order to provide a long-range channel prediction algorithm by predicting the channel coefficients up to hundreds of symbols ahead using LMS filtering, which is adaptive and computationally less expensive than RLS filtering.
-The method was tested against simulated and measured data of static and mobile environments and yielded improved BER when combined with adaptive channel modulation.
-
-\subsubsection{SOS}
-In contrast to AR, the SOS model approximates the physical propagation process by modelling the channel as a linear combination of complex sinusoids. This model provides a good predictive performance, but only in cases where the channel parameters consisting of amplitude and Doppler frequency are static.
-
-Noteworthy are the MUSIC and ESPRIT algorithms used in \cite{wongWLC435LowComplexityAdaptive2006,wongJointChannelEstimation2005,semmelrodtInvestigationDifferentFading2003,tealSimulationPerformanceBounds2001,vaughanShorttermMobileChannel2000,chenNewApproachesChannel2006} where \cite{wongWLC435LowComplexityAdaptive2006} provides a reduced complexity ESPRIT algorithm, that tries to reduce the computational complexity of time-variant parameters seen in realistic channels.
-
-\subsubsection{BE}
-The BE model describes the channel as a linear set of basis functions, such as complex exponential (CE) or discrete prolate spheroidal (DPS) sequences, multiplied by coefficients, which are obtained through analysis of the pilot data. Zemen et al. \cite{zemenMinimumEnergyBandLimitedPredictor2007} provide a method based on time-concentrated and band-limited DPS sequences. The predictor dynamically selects the spanned subspace with the smallest reconstruction error and utilizes it in order to predict the channel.
+Of course these methods differ in many more aspects from each other, e.g. intended use case, target techology, time/distance horizon, KPIs, etc..
 
 
-While the DPS-BEM outperforms DPS-CEM in numerical simulations, yet no comparison is concluded against SOS and AR models. Of the latter two, AR models seem to perform better in terms of their prediction horizon and computational complexity as stated in \cite{semmelrodtInvestigationDifferentFading2003}.
-
-\subsubsection{Machine Learning}
-\subsection{Short- to Long-Term Prediction Schemes}
-
-
-The short- to long-term prediction is targeted rather at high-level applications that need long term knowledge for adjusted communication. Therefore predictions are mostly performed for indicators such as throughput, latency or package loss, which are linked to the channel quality.
-
-
-
-Zeng et al. [] propose the usage of AR model-based prediction specifically for usage in V2X scenarios, enabling improved centralized scheduling compared to centralized scheduling techniques relying on collected real-time CSI. 
-Their solutions is a channel prediction and scheduling scheme using RSUs and Control Servers which receive data for prediction of the best relay candidate of the connected vehicles. The prediction is achieved using current velocity and position which yields the respective distances between the nodes. Using a predetermined LS fading model, a value for the LS fading can be predicted and used in a computation of the SNR. Using that value, a centralized scheduling scheme is applied based on the best candidate.
-While this technique reduces the transmission overhead and delay and opens the doors for further use cases of the predictions, the simulations were performed using a static path loss model which doesn’t account for parameters such as refraction or scattering.
-
-\subsubsection{Connectivity Map Based Methods}
+\subsection{Connectivity Map Based Methods}
 We start off the examination of works with so-called connectivity maps as they present the most simple concept for prediction of future connectivity. Mobile nodes such as vehicles share their experienced network quality with a central back end using their data channels, which in turns aggregates all the received data in a map.
 
 This concept differs from the related network coverage maps, which use mathematical models in order to determine network coverage and quality at a given place.
 The data aggregated for the connectivity map differs, as well as the processing that is performed when determining the network quality on a given location.
 
-Kelch et al. [] examine this concept in the vehicular application, focusing on the acquisition and matching of data, which includes CQI values queried for generated TCP/IP traffic on their cellular modem, as well as the coordinated gathered by a GPS module. In order to make good predictions for map segments, they examine a map segmentation method called Jump-P [], which outperforms simple fixed length segmentation in terms of the trade-off between the number of needed map segments and the RMSE of the pooled data. The CQI values shared to the sender determine the block size, as better channel conditions allow for a more optimized data transmission, thus enabling an estimation of the theoretical throughput for a given CQI value.
+Kelch et al. \cite{kelchCQIMapsOptimized2013} examine this concept in the vehicular application, focusing on the acquisition and matching of data, which includes CQI values queried for generated TCP/IP traffic on their cellular modem, as well as the coordinated gathered by a GPS module. In order to make good predictions for map segments, they examine a map segmentation method called Jump-P [], which outperforms simple fixed length segmentation in terms of the trade-off between the number of needed map segments and the RMSE of the pooled data. The CQI values shared to the sender determine the block size, as better channel conditions allow for a more optimized data transmission, thus enabling an estimation of the theoretical throughput for a given CQI value.
 
 Summarizing, this method enables a prediction of the theoretical throughput by previously collected  CQI values. Only a small range of CQI values lead to tolerably accurate predictions, as values below 20 rarely appeared and values above 25 were exceedingly inaccurate.
 
@@ -147,6 +115,17 @@ A similar approach is performed by Pögel et al. [], but in contrast they are co
 
 The only comparable measurement of connectivity maps is performed by Schmid et al. [] predicting the Round Trip Time (RTT) in addition to the throughput. Laying their focus on the segmentation of such a connectivity map, their results showed that even for an optimal manual segmentation, the RMSRE between the measured and predicted values is at least 39.12\% which leads them to conduct history based algorithms in order to predict future throughput.
 
+All these methods have in common, that they only predict cellular communication quality.
+
+\subsection{Machine Learning}
+
+
+\subsection{Unsorted}
+
+
+Zeng et al. [] propose the usage of AR model-based prediction specifically for usage in V2X scenarios, enabling improved centralized scheduling compared to centralized scheduling techniques relying on collected real-time CSI. 
+Their solutions is a channel prediction and scheduling scheme using RSUs and Control Servers which receive data for prediction of the best relay candidate of the connected vehicles. The prediction is achieved using current velocity and position which yields the respective distances between the nodes. Using a predetermined LS fading model, a value for the LS fading can be predicted and used in a computation of the SNR. Using that value, a centralized scheduling scheme is applied based on the best candidate.
+While this technique reduces the transmission overhead and delay and opens the doors for further use cases of the predictions, the simulations were performed using a static path loss model which doesn’t account for parameters such as refraction or scattering.
 
 
 
@@ -156,19 +135,7 @@ The only comparable measurement of connectivity maps is performed by Schmid et a
 
 
 
-
-
-
-
-
-
-
-\begin{figure}[!t]
-\centerline{\includegraphics[width=\columnwidth]{fig1.png}}
-\caption{Magnetization as a function of applied field.
-It is good practice to explain the significance of the figure in the caption.}
-\label{fig1}
-\end{figure}
+\section{Rest}
 
 Be aware of the different meanings of the homophones ``affect'' (usually a 
 verb) and ``effect'' (usually a noun), ``complement'' and ``compliment,'' 

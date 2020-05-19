@@ -1,0 +1,622 @@
+
+%% bare_conf.tex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+%% See:
+%% http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE
+%% conference paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/pkg/ieeetran
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall the IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. The IEEE's font choices and paper sizes can   ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+\documentclass[conference]{IEEEtran}
+% Some Computer Society conferences also require the compsoc mode option,
+% but others use the standard conference format.
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[conference]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/pkg/ifpdf
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+%\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
+
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+  % \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at: 
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+%\usepackage{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics.
+%
+% Note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/amsmath
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/pkg/algorithms
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/pkg/algorithmicx
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a larger sans serif font
+% than the serif footnote size font used in traditional IEEE formatting
+% and thus the need to invoke different subfig.sty package options depending
+% on whether compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+
+\usepackage[style=numeric-comp,sorting=none]{biblatex}
+\addbibresource{references.bib}
+
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{Comprehensive Overview of V2X Communication Prediction Methods for
+Cooperative Vehicular Maneuver Coordination}
+
+
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{\IEEEauthorblockN{Malte Nilges}
+\IEEEauthorblockA{Multimedia Communications Lab\\
+Technische Universität Darmstadt\\
+Email: malte.nilges@gmail.com}}
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+% make the title area
+\maketitle
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract
+
+\begin{abstract}
+  This paper gives a brief overview of the current state of Quality-of-Service (QoS) prediction concepts in the evolving V2X technologies. Firstly, the relevant metrics for intelligent transportation systems are identified for which a prediction proves to be useful. The considered technologies include C-V2X with its key interfaces Uu for cellular communication and PC5 for direct communication between UEs as well as 802.11p.
+  
+  For these technologies available and considered concepts are presented and a comparison is being drawn.
+\end{abstract}
+
+% no keywords
+
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
+\section{Introduction}
+\label{sec:introduction}
+In recent years, proactive communication between vehicles became a more prevalent matter of research. Today many manufacturers try to implement new technology into their vehicles, aiming at  improved security and comfort for the passengers. The needed communication infrastructure is developing fast, with several technologies available to choose from depending on the use case.
+
+One important use case of this new technology is the cooperative maneuver coordination, as this cooperation between vehicles enables an even higher degree of automation, leading to more efficient traffic and safety in complex driving situations.
+
+Independently from the deployment, as a centralized or decentralized approach, this high level of cooperation has strict performance requirements of the communication links. Yet there is no guarantee if these requirements will be satisfied at all times due to poor network coverage or propagation conditions.
+
+As a priori knowledge of the communication quality may serve to adjust and enhance the level of cooperation, this study performs a research in currently available communication prediction methods and evaluates these approaches in terms of their applicability to the use case of autonomous cooperative maneuver coordination.
+
+The paper is structured as follows: First, it will give an overview of related works. Following that, Sect. 3 will introduce the concept of cooperative maneuver cooperation and analyze its requirements on communication. In Sect. 4 current research of prediction methods is being explored. The following discussion will evaluate the existing methods in terms of their applicability on cooperative maneuver coordination and lay the foundation for the conclusion.
+
+
+\section[]{Related Works}
+As this work tries to give a comprehensive overview of prediction methods with a given set of constraints, other works providing overviews of methods or constraits must not be neglected. These can be grouped into different categories based on the research topics they portray.
+\subsection{Network Basics}
+Existing studies give a great overview of the challenges faced in vehicular communication. While Mecklenbräuer et al, 2011 gives an overview the available technologies, its focus lies in the depiction of the communication channels, the various scenarios (V2V, V2I, cellular), the metrics (e.g. fading, path loss and doppler shift) as well as the models (e.g. raytracing or stochastic models) for their simulation.
+
+For the estimation of the communication channel, traditionally pilot symbols are being used, which contain no data, but by which the receiver is able to estimate and equalize received data. This estimation is the key element in achieving low bit error rates (BER) but not trivial. 
+
+Existing pilot patterns such as the one from 802.11p were not designed for highly mobile networks, thus leading to decreased performance in these scenarios. Some of our the reviewed methods try to take the prediction as an advantage for channel estimation, as such it is crucial to understand and distinct these terms.
+\subsection{Communication Prediction}
+As by now, efforts in the standardization of vehicular communication prediction are undertaken, the 5GAA summarized the key concept of QoS prediction and its use cases and challenges. Notably, the whitepaper identifies possible deployment methods, namely Over-The-Top and Mobile Network Operator prediction, as well as  
+
+\section{Cooperative Maneuver Coordination}
+Cooperative Maneuver Coordination is the aim of making automated vehicles influence the each others behaviour and enabling joint driving maneuvers, making road traffic safer and more efficient.
+The concept consists of multiple use cases, among others \cite{bobanConnectedRoadsFuture2018}:
+\begin{itemize}
+\item lane changing
+\item platooning
+\item cacc (cooperative adaptive cruise control)
+\item intersection control
+\item collision avoidance
+\end{itemize}
+Hereby different approaches exist, either as centralized \cite{mengluICTInfrastructureCooperative2018} or decentralized cooperation \cite{llatserCooperativeAutomatedDriving2019,fortelleNetworkAutomatedVehicles2014}.
+
+In a centralized cooperation, a central entity such as a RSU, gains global knowledge by the usage of its own sensor data and direct communication with the vehicles in its coordination range and thereby plans optimal maneuvers in terms of efficiency and safety.
+
+The decentralized approach does not rely on a central entity, but rather leaves the planning to the vehicles, which adapt their maneuvers based on maneuver intentions shared by surrounding vehicles in order to achieve locally optimal traffic patterns.
+
+Without going too much into the details of implementation methods for the coordination, we rather want to take a look at the aspect of communication. Several works investigated the requirements for the communication links. Typical KPIs (Key Performance Indicators) are end-to-end latency, reliability, data rate (per vehicle) and the communication range.
+
+Boban et al. \cite{bobanConnectedRoadsFuture2018} suggest a latency of sub 3 to 100 ms, a required data rate of 1.3 to 25 MB/s, depending on the degree of sensor data dissemination, and a transmission reliability of over 99\%.
+
+As stated in \cite{llatserCooperativeAutomatedDriving2019}, the number of exchange messages and their contained amount of data need to adapt dynamically in order to prevent channel congestion, as it is apparent that the aforementioned link requirements cannot be met at all times. Furthermore vehicles need to interact with their environment even without these cooperation messages.
+
+The aim of this work is to evaluate existing communication prediction methods in terms of their applicability on the cooperative maneuver coordination. Therefore we first need to identify possible prediction scenarios and use cases.
+
+If we take the use case of intersection control and collision avoidance for example, it is clear, that vehicles are approaching each other from different directions and the requirements on the reliability on the communication between these vehicles are of a higher priority than the communication with other vehicles of the area. While a global prediction is attractive, the close-to-mid range prediction is far more relevant in such use cases. 
+
+The most interesting parameters are the reliability, e.g. measured in packet loss, and latency, as they decide whether the communication is stable enough in order to be used for cooperation. Otherwise the predictions can be used to initiate safety measures such as increased distancing against the desire for perfect efficiency.
+
+\section{Scope of the Paper}
+While there are many channel quality prediction approaches, not all are appropriate for our use case.
+
+This paper lays its focus on higher level V2X communication prediction, hence methods aimed at replacing traditional pilot-based channel estimation will not be covered.
+
+While these methods may use similar prediction models (e.g. autoregression and machine learning), their prediction horizon spans only several milliseconds, which enables adaptive transmission techniques such as adaptive modulation, channel coding or power control, but is conceptually inappropriate for the intended use case of adaptive coordination behaviour based on future connectivity.
+
+For further research in this area of research please refer to \cite{semmelrodtInvestigationDifferentFading2003,duel-hallenFadingChannelPrediction2007,wongJointChannelEstimation2005,wongWLC435LowComplexityAdaptive2006,vaughanShorttermMobileChannel2000}.
+
+
+\section{Methods}
+This section covers the research projects of prediction methods, categorized by their used prediction models. 
+
+Of course these methods differ in many more aspects from each other, e.g. intended use case, target techology, time/distance horizon, KPIs, etc..
+
+
+\subsection{Connectivity Map Based Methods}
+We start off the examination of works with so-called connectivity maps as they present the most simple concept for prediction of future connectivity. Mobile nodes such as vehicles share their experienced network quality with a central back end using their data channels, which in turns aggregates all the received data in a map.
+
+This concept differs from the related network coverage maps, which use mathematical models in order to determine network coverage and quality at a given place.
+The data aggregated for the connectivity map differs, as well as the processing that is performed when determining the network quality on a given location.
+
+Kelch et al. \cite{kelchCQIMapsOptimized2013} examine this concept in the vehicular application, focusing on the acquisition and matching of data, which includes CQI values queried for generated TCP/IP traffic on their cellular modem, as well as the coordinated gathered by a GPS module. In order to make good predictions for map segments, they examine a map segmentation method called Jump-P [], which outperforms simple fixed length segmentation in terms of the trade-off between the number of needed map segments and the RMSE of the pooled data. The CQI values shared to the sender determine the block size, as better channel conditions allow for a more optimized data transmission, thus enabling an estimation of the theoretical throughput for a given CQI value.
+
+Summarizing, this method enables a prediction of the theoretical throughput by previously collected  CQI values. Only a small range of CQI values lead to tolerably accurate predictions, as values below 20 rarely appeared and values above 25 were exceedingly inaccurate.
+
+A similar approach is performed by Pögel et al. \cite{pogelPrediction3GNetwork2012}, but in contrast they are collecting different data in the form of RSSI (which is part of CQI) as well as used cells, actual bandwidth and latency at a given location. This leads to a more accurate prediction, but as the authors show, the accuracy is highly dependant on external factors such as average speeds, congestion and weather as they show in their tests performed on different weekdays. As the map simply delivers collected data, it is not self-adjusting to these external factors.
+
+The only comparable measurement of connectivity maps is performed by Schmid et al. \cite{schmidPassiveMonitoringGeobased2018} predicting the Round Trip Time (RTT) in addition to the throughput. Laying their focus on the segmentation of such a connectivity map, their results showed that even for an optimal manual segmentation, the RMSRE between the measured and predicted values is at least 39.12\% which leads them to conduct history based algorithms in order to predict future throughput.
+
+All these methods have in common, that they only predict cellular communication quality.
+
+\subsection{Machine Learning}
+Machine Learning algorithms gained popularity with the first implementations conducted for communication prediction conducted in 2016.
+
+The aim is to train neural networks to 
+
+Most works using Machine Learning algorithms focus on the prediction of various KPIs, most commonly the throughput, in cellular networks such as LTE or 5G.
+
+The prediction methods further differ in their type of probing, either active or passive. In the active probing, the prediction algorithms requires an active transmission in order to predict the desired KPI, while for the passive approach available quality indicators are used like RSRP or RSRQ.
+
+One of the earlier works for KPI prediction using Machine Learning algorithms was conducted by Xu et al. \cite{xuPROTEUSNetworkPerformance2013} using up to 20 seconds of historic data, such as throughput, packet loss or one-way delay, in a Regression Tree model without preceding offline training in order to predict the respective values for a time horizon of up to 20 seconds.
+
+Tests were performed in 3G networks using mostly UDP traffic, as TCP has built-in congestion control and retransmission, influencing the measurements. As mobile nodes were not focus of the study, features such as velocity or location were not considered, making the work less applicable for V2X scenarios, but enabled following research using similar approaches.
+
+Torres et al. \cite{torres-figueroaQoSEvaluationPrediction2020} lay their focus on the readiness of MNOs to support V2X applications, including cooperative automated driving. Their prediction focused on end-to-end delay thresholds as an important factor for the required QoS. They selected the most important features, namely the average historic E2E delay, velocity, SINR, RSRP and RSSI, using the Maximum Dependancy algorithm in order to train a CNN. In a comparison against other Machine Learning algorithms such as Support Vector Regression, Random Forest or LSTM-RNN, only the latter achieved slightly better results but at a high computational cost.
+
+Tested on real world data, the algorithm yields a false positive rate of about 15\% resp. 39\% for being within/beyond a 50 ms E2E delay, which can be balanced out to yield about 26\% for both by adjusting the used data, however the overall prediction performance does not improve. The prediction horizon is not given.
+
+Schmid et al. \cite{schmidDeepLearningApproach2019, schmidComparisonAIBasedThroughput2019} as well as Jomrich et al. \cite{jomrichEnhancedCellularBandwidth2019} try to predict future throughput, both suggesting the usage of Random Forest algorithms but using different sets of features.
+While Schmid et al. include the usage of past throughput, making it an active approach, as well as OSM data for average number of buildings and the respective minimu heights, Jomrich et al. are performing a passive approach solely relying on network quality indicators and vehicle speed.
+
+In order to overcome this influential feature and achieve good results they implement localized training for each cell, achieving much better prediction results, but making the prediction highly location dependant.
+
+Other noteworthy works of throughput prediction are conducted in \cite{falkenbergDiscoverYourCompetition2017,yueLinkForecastCellularLink2018,sambaInstantaneousThroughputPrediction2017,sambaThroughputPredictionCellular} upon which the aforementioned works are based, trying to improve these studies by extending the feature sets, improving the data collection or comparing the results to different ML algorithms.
+
+
+
+
+\subsection{Unsorted}
+
+
+Zeng et al. [] propose the usage of AR model-based prediction specifically for usage in V2X scenarios, enabling improved centralized scheduling compared to centralized scheduling techniques relying on collected real-time CSI. 
+Their solutions is a channel prediction and scheduling scheme using RSUs and Control Servers which receive data for prediction of the best relay candidate of the connected vehicles. The prediction is achieved using current velocity and position which yields the respective distances between the nodes. Using a predetermined LS fading model, a value for the LS fading can be predicted and used in a computation of the SNR. Using that value, a centralized scheduling scheme is applied based on the best candidate.
+While this technique reduces the transmission overhead and delay and opens the doors for further use cases of the predictions, the simulations were performed using a static path loss model which doesn’t account for parameters such as refraction or scattering.
+
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that the IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command,
+% and the \label for the overall figure must come after \caption.
+% \hfil is used as a separator to get equal spacing.
+% Watch out that the combined width of all the subfigures on a 
+% line do not exceed the text width or a line break will occur.
+%
+%\begin{figure*}[!t]
+%\centering
+%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\label{fig_second_case}}
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat[]), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
+% labels, the optional argument to \subfloat must be present. If a
+% subcaption is not desired, just leave its contents blank,
+% e.g., \subfloat[].
+
+
+% An example of a floating table. Note that, for IEEE style tables, the
+% \caption command should come BEFORE the table and, given that table
+% captions serve much like titles, are usually capitalized except for words
+% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
+% and up, which are usually not capitalized unless they are the first or
+% last word of the caption. Table text will default to \footnotesize as
+% the IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that the IEEE does not put floats in the very first column
+% - or typically anywhere on the first page for that matter. Also,
+% in-text middle ("here") positioning is typically not used, but it
+% is allowed and encouraged for Computer Society conferences (but
+% not Computer Society journals). Most IEEE journals/conferences use
+% top floats exclusively. 
+% Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the
+% \fnbelowfloat command of the stfloats package.
+
+
+
+
+\section{Conclusion}
+The conclusion goes here.
+
+
+
+
+% conference papers do not normally have an appendix
+
+
+% use section* for acknowledgment
+\section*{Acknowledgment}
+
+
+The authors would like to thank...
+
+
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+\printbibliography
+
+% that's all folks
+\end{document}
+
+
