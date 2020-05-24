@@ -1,0 +1,369 @@
+
+%% bare_conf.tex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+
+\documentclass[conference]{IEEEtran}
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+  % \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\usepackage{nameref}
+\usepackage[style=ieee,url=false,sorting=none,backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+\patchcmd{\bibsetup}{\interlinepenalty=5000}{\interlinepenalty=10000}{}{}
+\AtEveryBibitem{% Clean up the bibtex rather than editing it
+  \clearfield{issn}
+  \clearlist{language}
+  \clearfield{note}
+  \clearfield{extra}
+  \clearfield{eventtitle}
+  \clearfield{primaryClass}
+  \clearfield{series}
+  \clearfield{location}
+  \clearlist{location}
+  %\ifentrytype{book,inproceedings}{}{% Remove publisher and %editor except for books
+  %  \clearlist{publisher}
+  %  \clearname{editor}
+  %}
+}
+%\usepackage{caption}
+%\usepackage{ltablex}
+\usepackage{orcidlink}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{float}
+\hypersetup{colorlinks=false}
+
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{Comprehensive Overview of V2X Communication Prediction Methods for
+Cooperative Vehicular Maneuver Coordination}
+
+
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{\IEEEauthorblockN{\ \ Malte Nilges\,\orcidlink{0000-0001-9704-8390}}
+\IEEEauthorblockA{Multimedia Communications Lab\\
+Technische Universität Darmstadt\\
+Darmstadt, Germany\\
+Email: malte.nilges@gmail.com}}
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+% make the title area
+\maketitle
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract
+
+\begin{abstract}
+As of today, substential research effort in the field of autonomous driving is directed towards concepts for cooperative maneuver coordination, which relies more than any other V2X use case on communication with a high reliability and a low latency.\\
+This paper examines efforts made in predicting such and other relevant indicators and implementations for enhancing the use case of cooperative maneuver coordination. Some of those enhancements include improved scheduling as well as transmission schemes, including proactive channel modulation, or adaptive selection of most suitable radio technology in case of a heterogeneous network architecture.\\
+After the examination of requirements on the communication, concepts and methods in the field of physical channel and performance indicator predictions are portrayed and afterwards discussed in terms of their applicability on our use case.\\
+Concluding the survey, it is apparent that only few works lay their focus on this area of research and further works are needed for more suitable prediction methods and applications.
+\end{abstract}
+
+% no keywords
+
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
+\section{Introduction and Contributions}
+\label{sec:introduction}
+In recent years, proactive communication between vehicles became a more prevalent matter of research. Today many manufacturers try to implement new autonomous driving features in their vehicles, aiming at improved safety and comfort for the passengers. The required communication infrastructure is developing fast, with several technologies available to choose from depending on the use case, combined under the term vehicle-to-everything or V2X.
+
+One important use case of this new technology is the cooperative maneuver coordination, as this cooperation between vehicles enables an even higher degree of automation, leading to more efficient traffic and safety in complex driving situations. Independently from the deployment, as a centralized or decentralized approach, this high level of cooperation has strict performance requirements of the communication links. Yet there is no guarantee whether these requirements will be satisfied at all times due to poor network coverage or propagation conditions.
+
+As a priori knowledge of the communication quality may serve V2X applications to adjust and enhance the level of cooperation, this study performs an extensive research of currently available communication prediction methods and evaluates these approaches in terms of their applicability to the use case of autonomous cooperative maneuver coordination.
+
+The remainder of the paper is structured as follows: First, it will give an overview of related works in Sect. \ref{sec:rw}. Following that, Sect. \ref{sec:cvmc} will introduce the concept of cooperative maneuver cooperation and analyze its requirements on communication links. In Sect. \ref{sec:methods}, current research of communication prediction methods applicable in vehicular use cases is being explored. The following discussion in Sect. \ref{sec:discussion} will evaluate the existing methods and their underlying concepts in terms of their applicability on cooperative maneuver coordination and lay the foundation for the conclusion and outlook in Sect.~\ref{sec:conclusion}.
+
+
+\section{Related Works}\label{sec:rw}
+As the application of communication prediction on V2X use cases is a relatively new concept, only recently studies on a conceptual level have been conducted. 
+
+A whitepaper released by the 5G Automotive Association \cite{Making5GProactive2019} examines concepts, requirements and use cases of Quality of Service (QoS) prediction for automotive applications and the current state of research among the industry, which is currently in the area of the definition of use cases and requirements of said prediction. The paper divides possible approaches by their implementation at the layer of mobile network operators (MNOs) or at higher levels such as vehicle manufacturers. The base of the predictions are envisioned as QoS Key Performance Indicators (KPIs), such as latency, reliability or data rate. Other aspects of the paper are the disseminination and triggering of QoS notifications to other connected vehicles.\\
+Hincapie et al. \cite{hincapieCollaborativeDistributedQoS2020} propose a QoS Manager as a Heterogeneous Link Layer (HLL) acting as bridge between application and link layer, configuring applications and radio technologies based on conducted QoS predictions. Likewise to the aforementioned whitepaper, the concept targets on a possible deployment of a prediction system in the vehicular space rather than on the actual prediction functionality and its use cases.
+
+As this work tries to give a comprehensive overview of prediction methods with a given set of constraints, other works providing overviews of such methods must not be neglected.\\
+Jomrich et al. \cite{jomrichEnhancedCellularBandwidth2019} give an extensive overview of prediction methods targeting the throughput of cellular networks. Other surveys targeting prediction of wireless communication channels are conducted in \cite{semmelrodtInvestigationDifferentFading2003,duel-hallenFadingChannelPrediction2007,konstantinovFadingChannelPrediction2019}.\\
+However, all of the aforementioned works focus on a small subset of predictable quality indicators and the focus is rarely put on automotive and more specifically cooperative use cases, the reason for which this work tries to close the gap.
+
+\section{Cooperative Maneuver Coordination}\label{sec:cvmc}
+Cooperative Maneuver Coordination is the aim of making automated vehicles influence the each others behaviour and enabling joint driving maneuvers, making road traffic safer and more efficient.
+The concept consists of multiple use cases, among others \cite{bobanConnectedRoadsFuture2018}:
+\begin{itemize}
+\item lane changing
+\item platooning
+\item cooperative adaptive cruise control (CACC)
+\item intersection control
+\item collision avoidance (CA)
+\end{itemize}
+Hereby different approaches exist, either as centralized \cite{mengluICTInfrastructureCooperative2018} or decentralized cooperation \cite{llatserCooperativeAutomatedDriving2019,fortelleNetworkAutomatedVehicles2014}.\\
+In a centralized cooperation, a central entity such as a Roadside Unit (RSU), gains global knowledge by the usage of its own sensor data and direct communication with the vehicles in its coordination range and thereby plans optimal maneuvers in terms of efficiency and safety.\\
+The decentralized approach does not rely on a central entity, but rather leaves the coordination to the vehicles, which adapt their maneuvers based on maneuver intentions shared by surrounding vehicles in order to achieve locally optimal traffic patterns.
+
+Without going too much into the details of implementation methods for the coordination, we rather want to take a look at the aspect of communication. Several works investigated the requirements for the communication links.\\
+Typical Key Performane Indicators (KPIs) are latency, reliability, measured by Block Error Rate (BER) or Package Loss (PL), throughput and the communication range.\\
+Boban et al.~\cite{bobanConnectedRoadsFuture2018} suggest a latency of sub 3 to 100 ms, a required data rate of 1.3 to 25 MB/s, depending on the degree of sensor data dissemination, and a transmission reliability of over 99\% for our uses case. As stated in \cite{llatserCooperativeAutomatedDriving2019}, the number of exchange messages and their contained amount of data need to adapt dynamically in order to prevent channel congestion, as it is apparent that the aforementioned link requirements cannot be met at all times. Furthermore vehicles need to interact with their environment even without these cooperation messages.
+
+The aim of this work is to evaluate existing communication prediction methods in terms of their applicability on the cooperative maneuver coordination. Therefore we first need to identify possible prediction scenarios and use cases.\\
+If we take the use case of intersection control and collision avoidance for example, it is clear, that vehicles are approaching each other from different directions and the requirements on the reliability on the communication between these vehicles are of a higher priority than the communication with other vehicles of the area. While a global prediction is attractive, the close-to-mid range prediction is far more relevant in such use cases. The most interesting parameters are the reliability, e.g. measured in packet loss, and latency, as they decide whether the communication is stable enough in order to be used for cooperation. If this is not the case, predictions can be used to initiate safety measures such as increased distancing opposing the desire for perfect efficiency. On the other hand, predictions on the link level may be used for adaptive transmission schemes or selection of the most suitable radio interface in case of a heterogenous communication architecture, leading to a safe operation which would not be possible without this prior knowledge.
+
+This brief example tried to give a rough understanding of the possibilities of a reliable and fitting communication prediction in the cooperative driving scenario. Of course there may be many more ideas and applications, hence why this paper tries to encourage scientists to conduct specialized methods and use cases of such predictions by provding an extensive overview of existing prediction methods in the following Section.
+
+\section{Concepts and Methods for Communication~Prediction}\label{sec:methods}
+This section covers the research projects of V2X communication prediction methods, divided into methods for KPI and channel prediction.
+
+While the KPI prediction lays its focus on the prediction of network performance indicators such as throughput or latency, which are partially derived from the channel properties, the channel prediction focuses on the link level parameters predominantly for enhanced transmission schemes.
+
+Nevertheless, as both types of predictions may be utilized for maneuver coordination tasks, concepts and implementations for both will be examined in the following.
+
+\subsection{KPI Prediction}\label{kpi}
+\subsubsection{Connectivity Maps}\mbox{}\\
+We start off the examination of works with so-called connectivity maps as they present the most simple concept for prediction of future connectivity. Mobile nodes such as vehicles share their experienced network quality with a central back end using their data channels, which in turns aggregates all the received data in a map. The data aggregated for the connectivity map differs, as well as the processing that is performed when determining the network quality on a given location.
+
+This concept differs from the related network coverage maps, which use mathematical models in order to determine network coverage and quality at a given place.
+
+Kelch et al. \cite{kelchCQIMapsOptimized2013} examine this concept in the vehicular application, focusing on the acquisition and matching of data, which includes CQI values queried for generated TCP/IP traffic on their cellular modem, as well as the coordinates gathered by a GPS module. In order to make good predictions for map segments, they examine a map segmentation algorithm, which outperforms simple fixed length segmentation in terms of the trade-off between the number of needed map segments and the RMSE of the pooled data. The CQI values shared to the sender determine the block size, as better channel conditions allow for a more optimized data transmission, thus enabling an estimation of the theoretical throughput for a given CQI value. The limitations of deriving the throughput by the use of CQI are apparent as only a small range of CQI values lead to tolerable predictions.
+
+A similar approach is performed by Pögel et al. \cite{pogelPrediction3GNetwork2012}, but in contrast they are collecting different data in the form of RSSI (which is part of CQI) as well as used cells, actual bandwidth and latency at a given location. This leads to a more accurate prediction, but as the authors show, the accuracy is highly dependant on external factors such as average speeds, congestion and weather as they show in their tests performed on different weekdays. As the map simply delivers collected data, it is not self-adjusting to these external factors.
+
+The only comparable measurement of connectivity maps is performed by Schmid et al. \cite{schmidPassiveMonitoringGeobased2018} predicting the Round Trip Time (RTT) in addition to the throughput. Laying their focus on the segmentation of such a connectivity map, their results showed that even for an optimal manual segmentation, the RMSRE between the measured and predicted values is at least 39.12\% which leads them to conduct history based algorithms in order to predict future throughput.
+
+All the aforementioned methods have in common, that they only predict cellular communication quality. 
+\\
+\subsubsection{Machine Learning}\mbox{}\\
+History based algorithms used for communication quality prediction in the vehicular scenario are almost exclusively based on Machine Learning methods. Furthermore, all of the conducted works focus on cellular networks such as LTE or 5G rather then VANETs.
+
+The prediction methods further differ in their type of probing, either active or passive. In the active probing, the prediction algorithms require an active transmission in order to predict the desired KPI, while for the passive approach available channel quality indicators, such as signal strength or SNR, in combination with sensor data are used.
+
+One of the earlier works for KPI prediction using Machine Learning algorithms was conducted by Xu et al. \cite{xuPROTEUSNetworkPerformance2013} using up to 20 seconds of historic data, such as throughput, packet loss or one-way delay, in a Regression Tree model without preceding offline training in order to predict the respective values for a time horizon of up to 20 seconds. Tests were performed in 3G networks using mostly UDP traffic, as TCP has built-in congestion control and retransmission, influencing the measurements. As mobile nodes were not focus of the study, features such as velocity or location were not considered, making the work less applicable for V2X scenarios, but enabled following research using similar approaches.
+
+Torres et al. \cite{torres-figueroaQoSEvaluationPrediction2020} lay their focus on the readiness of MNOs to support V2X applications, including cooperative automated driving. Their prediction focused on end-to-end (E2E) delay thresholds as an important factor for the required QoS. They selected the most important features, namely the average historic E2E delay, velocity, SNR, RSRP and RSSI, using the Maximum Dependancy algorithm in order to train a Convolutional Neural Network (CNN). In a comparison against other Machine Learning algorithms such as Support Vector Regression (SVR), Random Forest (RF) or Long Short-Term Memory based Recurrent Neural Networks (LSTM-RNN), only the latter achieved slightly better results but at a high computational cost. Tested on real world measurements conducted in various driving scenarios, the algorithm yields a false positive rate of about 15\% resp. 39\% for being within/beyond a 50 ms E2E delay, which can be balanced out to yield about 26\% for both by adjusting the used data, however the overall prediction performance does not improve. The achieved prediction horizon is not given, but can be estimated in the range of several seconds.
+
+Schmid et al. \cite{schmidDeepLearningApproach2019, schmidComparisonAIBasedThroughput2019} as well as Jomrich et al. \cite{jomrichEnhancedCellularBandwidth2019} try to predict future throughput, both suggesting the usage of RF algorithms but using different sets of features.
+
+Schmid et al. include the usage of past throughput, making it an active approach, as well as features engineered from OSM data such as the average number of buildings and the respective minimum heights. Comparing different AI-based methods and Linear Ridge Regression in terms of several error estimation criterions for a desired prediction window of 15 s, they suggest the usage of SVR and RF model yielding the best results on the average.
+
+Jomrich et al. are performing a passive approach relying on network quality indicators and vehicle speed. In order to overcome the influential feature of past throughput and achieve good results they implement localized training for each cell, achieving much better prediction results, but making the prediction quality highly location dependant and the offline training more complex. This approach was inspired by previous studies on Connectivity Maps and shows the possible benefits of the combination of different approaches.
+
+Other noteworthy works of throughput prediction are conducted in \cite{falkenbergDiscoverYourCompetition2017,yueLinkForecastCellularLink2018,sambaInstantaneousThroughputPrediction2017,sambaThroughputPredictionCellular2016} upon which the aforementioned works are based, trying to improve these studies by extending the feature sets, improving the data collection or comparing the results to different ML algorithms.
+
+
+\subsection{Physical Channel Prediction}
+\subsubsection{Traditional Extrapolation Schemes}\mbox{}\\
+Traditional channel prediction schemes based on past CSI can be classified into three methods \cite{duel-hallenFadingChannelPrediction2007}: Sum-of-Sinusoids (SOS) Model, Basis Expansion (BE) Model and Autoregression (AR) Model.
+
+The AR model uses previous channel samples in form of CSI in combination with time-variant coefficients. These channel coefficients need to be computed using estimation techniques, either static, such as Wiener filter or Least Squares (LS) criterion, or adaptive, such as various Least Mean Square (LMS) or Recursive Least Squares (RLS) filters. In contrast, the SOS model approximates the physical propagation process by modeling the channel as a linear combination of complex sinusoids which associated parameters are determined using spectral estimation methods. This model provides a good predictive performance, but only in cases where the channel parameters consisting of amplitude and Doppler frequency are rather static. The BE model describes the channel as a linear set of basis functions, such as complex exponential (CE) or discrete prolate spheroidal (DPS) sequences, multiplied by coefficients, which are obtained through analysis of the pilot data.
+
+One of the most acclaimed works for channel prediction using these traditional schemes was conducted by Duel-Hallen et al. \cite{duel-hallenLongrangePredictionFading2000}. Their research was performed in order to provide a long-range channel prediction algorithm by predicting the channel coefficients up to hundreds of symbols ahead using LMS filtering, which is adaptive and computationally less expensive than RLS filtering. The method was inter alia tested and compared to estimated CSI against measured data of a mobile environment, namely low density urban traffic, where it yielded an improved bit error rate (BER) when combined with adaptive channel modulation.
+
+Semmelrodt and Kattenbach \cite{semmelrodtInvestigationDifferentFading2003} give a comprehensive overview of further methods with in-depth comparisons, resulting in a recommendation of AR algorithms in terms of prediction accuracy and computational complexity.
+\\
+\subsubsection{AI-based Prediction}\mbox{}\\
+More recently, AI-based prediction methods in form of Neural Networks (NN) emerged. Cheng et al. \cite{chengLowComplexityChannel2020} and Joo et al. \cite{jooDeepLearningBasedChannel2019} present state of the art works of such channel prediction in vehicular scenarios. 
+
+Cheng et al. examine the use of a Neural Network, Online Sequential Extreme Learning Machine (OS-ELM), combined with a low complexity forgetting mechanism, in order to perform CSI prediction for MIMO systems. In simulations with high Doppler Shifts, the proposed method outperforms the compared AR model, leading to improved BER when combined with a precoding mechanism such as Zero-Forcing (ZF) precoding.
+
+While the aformentioned channel prediction techniques only investigated cellular communication, Joo et al. were the first to attempt channel prediction based on past CSI in V2V networks, in this case 802.11p. The method is based on an offline trained LSTM-RNN using CSI and SNR as features.
+Testing on real world data from different driving scenarios yielded improved results compared to a Least Squares based AR model. Like all beforementioned works, the method lacks the usage of data from on-vehicle sensors, however the authors propose future work on this approach along with a deployment of transmission and resource allocation schemes.
+\\
+\subsubsection{Traffic-based Prediction Schemes}\mbox{}\\
+One last scheme with promising results on cooperative scenarios is the channel prediction based on traffic patterns, either in a decentralized approach using on-vehicle sensor data or in a centralized approach using shared information of the vehicles position and velocity.
+
+One of the earlier works was conducted by Nagel and Morscher \cite{nagelConnectivityPredictionMobile2011}, exploring the potential of a connectivity prediction by the means of mobility prediction. The focus of the work lies on the prediction of the vehicles future position based on current position, velocity and OSM data, including intersections and street signs. Thereafter they show the feasability of path loss prediction exemplariliy on a simple disc model and by the exchange of the vehicles respective future positions. They point out the importance of distinguishing LOS and NLOS scenarios and therefore incorporate building data into their model. However, as the authors state themselves, adequate channel models have to be chosen and updated constantly in order to reflect changing radio environments and aspects such as position sharing and more sophisticated channel models were not further examined.
+
+Zeng et al. \cite{zengChannelPredictionBased2017} propose the usage of a centralized position prediction, enabling improved centralized transmission scheduling compared to other scheduling techniques relying on collected real-time CSI. Their solution is a channel prediction and scheduling scheme using RSUs and Control Servers which receive sensor data for prediction of the best relay candidate of the connected vehicles. The prediction is achieved using the current decoding status, velocity and position of a possible candidate, the latter of which which yield the respective distances between the nodes. Using a predetermined channel model, a centralized scheduling scheme is applied based on the best relay candidate. While this technique enables cooperative data dissemination, reduces the transmission overhead and delay and potentially opens the door for further use cases of the predictions, the simulations were performed using a static path loss model which does not account for parameters such as refraction or scattering.
+
+
+\begin{table*}[!htbp]
+  \renewcommand{\arraystretch}{1.3}
+  \caption{Overview of the portrayed prediction Methods}
+  \label{table_overview}
+  \centering
+  
+  \begin{tabular}
+    {lllllll}
+    \toprule
+Method                 & Network  & Prediction           & Used Features                & \begin{tabular}[c]{@{}l@{}}Prediction\\ Model\end{tabular} & \begin{tabular}[c]{@{}l@{}}Prediction\\ Horizon\end{tabular} & \begin{tabular}[c]{@{}l@{}}Simulation\\ Data\end{tabular} \\
+  \midrule
+  Kelch et al. \cite{kelchCQIMapsOptimized2013}          & LTE      & CQI$\,\to\,$TP & Mapped CQI                   & Connectivity Map                                           & Long                                                  & Real World                                                \\
+Pögel et al. \cite{pogelPrediction3GNetwork2012}          & 3G       & RSSI, BW, L, UC      & Mapped ---                   & Connectivity Map                                           & Long                                                  & Real World                                                \\
+Schmid et al. \cite{schmidPassiveMonitoringGeobased2018}         & LTE      & TP, RTT              & Mapped ---                   & Connectivity Map                                           & Long                                                  & Real World                                                \\ \hline
+Xu et al. \cite{xuPROTEUSNetworkPerformance2013}             & 3G       & TP, PL, E2E-D        & TP, PL, E2E-D                & ML: Regression Tree                                        & Short                                                 & Real World                                                \\
+Torres-Figueroa et al. \cite{torres-figueroaQoSEvaluationPrediction2020}& LTE      & E2E-D                & E2E-D, V, SNR, SS            & ML: NN                                                     & Short                                                 & Real World                                                \\
+Schmid et al. \cite{schmidComparisonAIBasedThroughput2019,schmidDeepLearningApproach2019}         & LTE      & TP                   & TP, V, SNR, SS, P, OSM       & ML: LSTM, FFN, SVR, RF                                     & Short                                                 & Real World                                                \\
+Jomrich et al. \cite{jomrichEnhancedCellularBandwidth2019}        & LTE      & TP                   & TP, V, SS, P, CH             & ML: RF                                                     & Short                                                 & Real World                                                \\ \hline
+Duel-Hallen et al. \cite{duel-hallenLongrangePredictionFading2000}    & Cellular & CSI                  & CSI                          & AR                                                         & Immediate                                             & Real World                                                \\ \hline
+Cheng et al. \cite{chengLowComplexityChannel2020}          & Cellular & CSI                  & CSI                          & ML: TFOS-ELM                                               & Short                                                 & Model                                                     \\
+Joo et al. \cite{jooDeepLearningBasedChannel2019}            & 802.11p  & CSI                  & CSI, SNR                     & ML: LSTM                                                   & Short                                                 & Real World                                                \\ \hline
+Nagel \& Morscher \cite{nagelConnectivityPredictionMobile2011}     & V2V      & SS                   & Traffic Pattern, OSM         & IVD$\,\to\,$Channel Model                            & Medium                                                & Model                                                     \\
+Zeng et al. \cite{zengChannelPredictionBased2017}           & V2V, V2I & SNR                  & Traffic Pattern, Link Status & IVD$\,\to\,$Channel Model                            & Medium                                                & Model                                                     \\
+Alieiev et al. \cite{alieievPredictiveCommunicationIts2018,alieievSensorbasedCommunicationPrediction2017}        & V2V      & Doppler Shift        & Traffic Pattern              & IVD$\,\to\,$Channel Model                            & Medium                                                & Model                                                    
+\\
+    \bottomrule
+  \end{tabular}
+  \medskip\\
+  \textbf{Abbreviations}: BW - Bandwidth, CH - Various Channel Parameters, CQI - Channel Quality Index, CSI - Channel State Information, E2E-D - End-to-End Delay, IVD - Inter Vehicle Distance, L - Latency, OSM - Open Street Map, P - Position, PL - Packet Loss, RSSI - Received Signal Strength, RTT - Round Trip Time, SNR - Signal to Noise Ratio, SS - Signal Strength, TP - Throughput, UC - Used Cells, V - Velocity
+\end{table*}
+
+Focussing on applications for cooperative driving, Alieiev et al. propose a decentralized sensor-aided communication prediction scheme for V2V communication \cite{alieievSensorbasedCommunicationPrediction2017,alieievPredictiveCommunicationIts2018}. The prediction algorithm uses on-vehicle sensor data in order to determine positions and velocities of surrounding vehicles with the further option of using shared data of surrounding vehicles. Using these values, the Doppler shift between two communicating nodes can be calculated, including components from additional reflections of surrounding static or moving objects detected by the sensors. This enables a compensation for the Doppler Shift at the receiver, transmitter or both sides combined, the latter of which is not further elaborated.\\
+Consecutive works focus on applications derived from the prediction, mainly for cooperative collision avoidance (CCA) \cite{jornodEnvironmentAwareCommunicationsCooperative2018} and high density platooning (HDPL) \cite{alieievImprovingPerformanceHighDensity2020}.\\
+While for the HDPL use case a CACC still performs better than ACC in terms of inter vehicle distancing (IVD) error, the error is minimized by the improved link quality due to the employed Doppler Shift compensation, as simulations in several highway scenarios using a realistic modified Spatial Channel Model (SCM) show. Similar to HDPL, the CCA use case also benefits from the reduced link-level error rate, yielding drastically improved reaction times thus possibly preventing accidents in high velocity scenarios.
+
+\section{Discussion}\label{sec:discussion}
+
+As shown in the previous section, different types of communication prediction exist, ranging from link-level channel prediction to high level performance indicator prediction. The underlying concepts thereby vary between extrapolation of past values, collection of historic values and sensor based prediction and may even use a combination of some of those.
+
+V2X communication prediction is still an emerging area of research, as the lack of works regarding the prediction of V2V communication shows.
+This inter-vehicular communication however is an important factor, as decentralized approaches play an important role in future cooperative driving scenarios due to the high requirements on latency and reliability.
+
+Connectivity Maps may have viable use cases in vehicular scenarios, especially for non-critical requirements for example in the infotainment area. However even for this use case, a number of factors have to be incorporated, as the performance is highly fluctuating depending on the active user count, the weather and other uncalcuated influences. As the concept is employed only in V2N due to the impossibility of using the approach in dynamic V2V communication, it can be considered as unsuitable for our purposes.
+
+Online prediction methods are much more useful for safety related use cases, as it allows for a more dynamic and precise prediction. This prediction can range between milliseconds to multiple seconds, at least when combined with sensor data such as position and velocity estimations.
+The works predicting throughput or latency are only employed for V2N communication.\\
+Such communication can be exploited for global information dissemination between remote platoons or infrastructure. This information may include weather conditions, road works, accidents or congestion ultimately leading to improved safety, efficiency and comfort. Another use case may lie in the research area of teleoperated driving, but this will not be further examined at this point.\\
+However, V2N communication plays in neither of the cooperative driving concepts examined in Sec.~\ref{sec:cvmc} an highly relevant role, but rather provides supplementary services.
+
+Of the examined methods, only some physical channel prediction schemes are able to provide larger additional value for the cooperative maneuver coordination. Especially \cite{zengChannelPredictionBased2017} and \cite{alieievPredictiveCommunicationIts2018} provide practicable methods, the former by providing centralized data dissemination schemes that may prove useful for equally centralized maneuver coordination concepts, being the only method focusing on V2I communication with RSUs, and the latter by showcasing real benefits in terms of CCA and HDPL scenarios.\\
+It is noteworthy to mention that both methods rely on traffic pattern prediction, which should result in reliable predictions of local communication quality when combined with appropriate channel models and possibly further enhanced by additional shared sensor data.
+
+However as applications vary between the different use cases of V2X communication and even within the specific use case of cooperative maneuver coordination, Table~\ref{table_overview} outlines the most important characteristics of each portrayed prediction method, showing what has already been achieved and what may be missing for a defined future application.
+
+\section{Conclusion}\label{sec:conclusion}
+This paper examines a variety of concepts and methods for vehicular communication prediction and evaluates them in terms of their applicability for cooperative maneuver coordination. These concepts include predictions based on extrapolated, collected or sensor-based data with methods using different subsets of prediction features and algorithms which obtain a variety of quality indicators.
+
+However, as the results show, only a minority of works is suitable for this specific use case due to the wide focus on cellular rather than inter-vehicular communication.\\
+The most promising works rely on traffic prediction based on shared or estimated position and velocitiy of the vehicles in the surrounding area. Further research should be considered to enable predictions of a larger subset of performance indicators and for their usage in proactive systems, for centralized as well as decentralized approaches.
+
+
+
+% conference papers do not normally have an appendix
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+\printbibliography
+% that's all folks
+\end{document}
+
+
